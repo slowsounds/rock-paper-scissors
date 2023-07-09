@@ -1,3 +1,60 @@
+function storeRockVar() {
+    playerSelection = "rock"
+    console.log("playerSelection is " + playerSelection)
+    return playerSelection
+}
+
+const rockButton = document.getElementById("rockButton")
+
+rockButton.addEventListener("click", () => {
+    storeRockVar();
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    document.getElementById("playerOutput").innerHTML = playerSelection;
+    document.getElementById("computerOutput").innerHTML = computerSelection;
+    document.getElementById("gameResult").innerHTML = 
+    "So that means the score is You: " + playerScore + " and Computer: " + computerScore;
+    game();
+});
+
+function storePaperVar() {
+    playerSelection = "paper"
+    console.log("playerSelection is " + playerSelection)
+    return playerSelection
+}
+
+const paperButton = document.getElementById("paperButton")
+
+paperButton.addEventListener("click", () => {
+    storePaperVar();
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    document.getElementById("playerOutput").innerHTML = playerSelection;
+    document.getElementById("computerOutput").innerHTML = computerSelection;
+    document.getElementById("gameResult").innerHTML = 
+    "So that means the score is You: " + playerScore + " and Computer: " + computerScore;
+    game();
+});
+
+function storeScissorsVar() {
+    playerSelection = "scissors"
+    console.log("playerSelection is " + playerSelection)
+    return playerSelection
+}
+
+const scissorsButton = document.getElementById("scissorsButton")
+
+scissorsButton.addEventListener("click", () => {
+    storeScissorsVar();
+    let computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    document.getElementById("playerOutput").innerHTML = playerSelection;
+    document.getElementById("computerOutput").innerHTML = computerSelection;
+    document.getElementById("gameResult").innerHTML = 
+    "So that means the score is You: " + playerScore + " and Computer: " + computerScore;
+    game();
+});
+
 console.log("Welcome to the game.");
 
 let computerScore = 0;
@@ -10,7 +67,7 @@ function getComputerChoice(){
     }
 
 function playRound(x,y){
-    
+   
     if (x === y) {
         result = "It is a tie"; 
     } else if ( x === "paper" && y === "rock"){ 
@@ -35,7 +92,7 @@ function playRound(x,y){
     
     console.log(result, playerScore, computerScore);
 
-    console.log('playerSelection is ' + x);
+    // console.log('playerSelection is ' + x);
     console.log('computerSelection is ' + y);
 
     return(result, playerScore, computerScore)
@@ -44,24 +101,23 @@ function playRound(x,y){
 function game(){
     for (var round = 0; round < 10; round++) {
 
-if (computerScore === 2){
+if (computerScore === 3){
 console.log("Computer Wins");
-return ("Computer Wins");
-} if (playerScore === 2){
-console.log("Player Wins");
+document.getElementById("overallResult").innerHTML = "GAME OVER - Computer Wins";
+return ("GAME OVER - Computer Wins");
+} if (playerScore === 3){
+console.log("GAME OVER - Player Wins");
+document.getElementById("overallResult").innerHTML = "GAME OVER - Player Wins";
 return ("Player Wins"); 
 } else {
-    
-    let computerSelection = getComputerChoice();
-
-    let playerSelectionFreeform = prompt('Choose Rock, Paper, or Scissors');
-    let playerSelection = playerSelectionFreeform.toLowerCase();
-
-    playRound(playerSelection, computerSelection);
-       
+console.log("This game will never end");
+return ("This game will never end");
     }   
 }
 }
 
-game();
+
+
+
+
 
